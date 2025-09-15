@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HirwaImpact - Securing Children's Futures in Rwanda</title>
+    <style>
+        :root {
+            --primary: #2E8B57;
+            --secondary: #FFD700;
+            --accent: #1E90FF;
+            --light: #F5F5F5;
+            --dark: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--primary), #1F6B48);
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .hero {
+            background: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .hero-content {
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 0.8rem 1.8rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #E6C200;
+            transform: translateY(-3px);
+        }
+        
+        section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #666;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 1rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            padding: 1rem;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .mission-vision {
+            background-color: #f9f9f9;
+        }
+        
+        .mv-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .mv-box {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .mv-box i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .mv-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .impact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .impact-item {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .impact-item i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .impact-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .impact-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+        
+        .values-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        
+        .value-item {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .value-item h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .contact {
+            background: linear-gradient(to right, var(--primary), #1F6B48);
+            color: white;
+        }
+        
+        .contact .section-title h2 {
+            color: white;
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-detail i {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: var(--secondary);
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            color: var(--dark);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">Hirwa<span>Impact</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#mission">Mission</a></li>
+                    <li><a href="#impact">Impact</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Securing Prosperous Futures for Vulnerable Children</h1>
+            <p>Providing holistic support through education, shelter, medical care, and family empowerment in Rwanda</p>
+            <a href="#contact" class="btn">Get Involved</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About HirwaImpact</h2>
+                <p>We are a non-profit organization dedicated to breaking the cycle of poverty by providing holistic support to vulnerable children and their families</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>HirwaImpact exists to secure a prosperous future for vulnerable children by providing for their essential needs and empowering their families to thrive. The word "Hirwa" (meaning "Green" or "Prosperity" in Kinyarwanda) reflects our commitment to growth and bright futures.</p>
+                    <p>We believe every child deserves a foundation for a prosperous future, which is why we ensure access to education, shelter, medical care, and clothing, while also empowering their parents with the tools to build a stable, self-sufficient home.</p>
+                    <p>Our unique, two-generation model supports both the child and the parent, creating a stable foundation for lasting change and breaking the cycle of poverty for generations to come.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Children learning together">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section id="mission" class="mission-vision">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Mission & Vision</h2>
+                <p>Guided by our core principles, we work towards a future where every child can thrive</p>
+            </div>
+            <div class="mv-container">
+                <div class="mv-box">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Our Mission</h3>
+                    <p>To nurture the holistic development of every child in our care. We provide immediate essentials—a safe home, medical care, education, and clothing—while simultaneously working with their families to create environments of stability and self-sufficiency.</p>
+                </div>
+                <div class="mv-box">
+                    <i class="fas fa-eye"></i>
+                    <h3>Our Vision</h3>
+                    <p>We envision a world where every child, regardless of their origin, has the opportunity to grow, learn, and prosper in a safe and loving environment. A future where communities are strengthened, and families are empowered to be the primary architects of their own bright tomorrow.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="impact" class="impact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Impact</h2>
+                <p>We measure our success by the tangible improvements in the lives of children and families</p>
+            </div>
+            <div class="impact-container">
+                <div class="impact-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Education</h3>
+                    <p>Ensuring school enrollment and attendance by providing scholarships, uniforms, books, and tutoring</p>
+                    <div class="impact-number">95%</div>
+                    <p>School attendance rate for children in our program</p>
+                </div>
+                <div class="impact-item">
+                    <i class="fas fa-home"></i>
+                    <h3>Shelter & Essentials</h3>
+                    <p>Providing safe housing accommodations and distributing packages of clothing and essential supplies</p>
+                    <div class="impact-number">250+</div>
+                    <p>Children provided with safe housing and essentials annually</p>
+                </div>
+                <div class="impact-item">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Health</h3>
+                    <p>Facilitating access to medical check-ups, vaccinations, and urgent care for children and their families</p>
+                    <div class="impact-number">100%</div>
+                    <p>Of children in our care have up-to-date health records</p>
+                </div>
+                <div class="impact-item">
+                    <i class="fas fa-hands-helping"></i>
+                    <h3>Family Empowerment</h3>
+                    <p>Equipping parents with skills training, micro-finance seed grants, and parental support workshops</p>
+                    <div class="impact-number">70%</div>
+                    <p>Of families report increased household income within 18 months</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Core Values</h2>
+                <p>The principles that guide everything we do at HirwaImpact</p>
+            </div>
+            <div class="values-container">
+                <div class="value-item">
+                    <h3>Holistic Care</h3>
+                    <p>We address the whole child—mind, body, and spirit—and the ecosystem of their family.</p>
+                </div>
+                <div class="value-item">
+                    <h3>Dignity & Respect</h3>
+                    <p>We serve with profound respect for the dignity of every child and family in our program.</p>
+                </div>
+                <div class="value-item">
+                    <h3>Sustainability</h3>
+                    <p>We don't just give aid; we build capacity. Our goal is family self-sufficiency.</p>
+                </div>
+                <div class="value-item">
+                    <h3>Community</h3>
+                    <p>We believe in the power of community and collaborate with local leaders to create lasting change.</p>
+                </div>
+                <div class="value-item">
+                    <h3>Impact & Transparency</h3>
+                    <p>We are committed to measurable results and transparent use of every dollar entrusted to us.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch to learn more about our work or discuss partnership opportunities</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-detail">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <p>+250 782 009 280</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <p>hirwaimpact250@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-map-marker
